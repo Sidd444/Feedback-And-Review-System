@@ -12,7 +12,7 @@ const Sidebar = () => {
     window.location.href = routes.home;
   };
 
-  const handleCreatePost = () => {
+  const handleCreateReview = () => {
     if (!user) {
       toast.error("Must log in first");
     }
@@ -30,8 +30,8 @@ const Sidebar = () => {
         )}
         {user && (
           <>
-            <Link to={routes.posts} className="block py-2">My Posts</Link>
-            <Link to={routes.create_post} onClick={handleCreatePost} className="block py-2">Create Post</Link>
+            {user.name==="admin"?<Link to={routes.check_reviews} className="block py-2">Check Reviews</Link>:<Link to={routes.reviews} className="block py-2">My Reviews</Link>}
+            <Link to={routes.create_review} onClick={handleCreateReview} className="block py-2">Create Review</Link>
             <button onClick={handleLogout} className="block py-2">Logout</button>
           </>
         )}

@@ -70,16 +70,15 @@ const ReviewList = () => {
           </div>
         </form>
       ) : (
-        reviews
-          .filter((review) => review.author._id === user._id)
-          .map((review) => (
+        <div className="space-y-8 max-h-[70vh] overflow-y-auto">
+        {reviews.filter((review) => review.author._id === user._id).map((review) => (
             <div
               key={review._id}
               className="mb-6 p-4 border border-gray-300 rounded-lg shadow-md bg-gradient-to-r from-violet-600 via-pink-600 to-yellow-600"
             >
               <h3 className="text-xl font-semibold mb-2 text-white">{review.title}</h3>
               <p className="text-white mb-2">{review.content}</p>
-              <p className="text-white mb-4">{review.excerpt}</p>
+              <p className="text-white mb-4">{review.excerpt}/5</p>
               <div className="flex space-x-4">
                 <button
                   onClick={() => handleEdit(review)}
@@ -95,7 +94,8 @@ const ReviewList = () => {
                 </button>
               </div>
             </div>
-          ))
+          ))}
+        </div>
       )}
     </div>
   );

@@ -8,5 +8,7 @@ router.get('/', reviewController.getAllReviews);
 router.get('/:id', reviewController.getReviewById);
 router.put('/:id', auth, reviewController.updateReviewById);
 router.delete('/:id', auth, reviewController.deleteReviewById);
+router.patch('/:id/approve', auth, reviewController.approveReviewById);
+
 
 module.exports = router;

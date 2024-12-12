@@ -12,6 +12,8 @@ import ReviewDetail from './components/ReviewDetail';
 import CreateReview from './components/CreateReview';
 import Footer from './components/Footer';
 import './App.css';
+import CheckReviews from './components/CheckReviews';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -22,6 +24,7 @@ function App() {
             <div className="flex bg-gray-900">
               <Sidebar />
               <div className="flex-1 flex flex-col">
+              <Toaster position="top-right" reverseOrder={false} />
                 <Navbar />
                 <div className="p-4">
                   <Routes>
@@ -31,6 +34,7 @@ function App() {
                     <Route path={routes.reviews} element={<ReviewsList />} />
                     <Route path={routes.reviews_id} element={<ReviewDetail />} />
                     <Route path={routes.create_review} element={<CreateReview />} />
+                    <Route path={routes.check_reviews} element={<CheckReviews />} />
                   </Routes>
                 </div>
               </div>

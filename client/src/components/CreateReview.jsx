@@ -40,22 +40,24 @@ const CreateReview = () => {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
+        placeholder="Review Title"
         required
         className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <input
-        type="text"
+        type="number"
+        min="1"
+        max="5"
         value={excerpt}
         onChange={(e) => setExcerpt(e.target.value)}
-        placeholder="Excerpt"
+        placeholder="Choose a rating between 1 to 5"
         required
         className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        placeholder="Content"
+        placeholder="Write Your Review Here"
         required
         className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none h-32"
       />

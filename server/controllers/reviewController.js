@@ -20,6 +20,21 @@ exports.getAllReviews = async (req, res) => {
   }
 };
 
+exports.approveReviewById = async (req, res) => {
+  console.log("server reached");
+  try {
+    const review = await Review.findById(req.params.id);
+    if (!review) {
+      return res.status(404).json({ error: 'Review not found' });
+    }
+    review.approved = true;
+    await review.save();
+    res.status(200).json({ message: 'Review approved', review });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 exports.getReviewById = async (req, res) => {
   try {
     const review = await Review.findById(req.params.id);
@@ -60,10 +75,10 @@ exports.deleteReviewById = async (req, res) => {
       return res.status(404).json({ error: 'Review not found' });
     }
 
-    if (review.author.toString() !== req.user.id) {
-      console.log("User not authorized");
-      return res.status(403).json({ error: 'User not authorized' });
-    }
+    // if (review.author.toString() !== req.user.id) {
+    //   console.log("User not authorized");
+    //   return res.status(403).json({ error: 'User not authorized' });
+    // }
 
     await Review.findByIdAndDelete(req.params.id);
     console.log("Review deleted successfully");

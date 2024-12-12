@@ -9,13 +9,14 @@ const Home = () => {
   return (
     <div className="max-w-3xl mx-auto p-6 h-screen">
       <h2 className="text-4xl font-bold text-center text-blue-700 mb-8">
-        Welcome to the Blog Website!
+        Welcome to the Reviewer!
       </h2>
+      <h3 className='text-white mt-3 mb-3 text-center'>Reviews Approved By admin will appear here</h3>
       {reviews.length === 0 ? (
         <p className="text-center text-gray-500">If Reviews don't appear then Relogin to the site</p>
       ) : (
         <div className="space-y-8 max-h-[70vh] overflow-y-auto">
-          {reviews.map((review) => (
+          {reviews.map((review) => review.approved && (
             <div key={review.id} className="bg-black p-6 rounded-xl shadow-md border-2 border-gray-300 border-3 transition-transform transform hover:scale-105 bg-gradient-to-r from-red-600 via-pink-600 to-yellow-600">
               <h3 className="text-2xl font-bold text-white mb-2">{review.title}</h3>
               <p className="text-gray-100 mb-4">{review.content}</p>
